@@ -15,7 +15,7 @@ import MobilePassiveData
 //import MotionSensor
 //import AudioRecorder
 
-open class OpenBridgeAppDelegate: UIResponder, UIApplicationDelegate, ReauthPasswordHandler {
+open class OpenBridgeAppDelegate: UIResponder, UIApplicationDelegate {
     open class var appId: String { "" }
     open class var pemPath: String { "" }
     open class var backgroundProcessId: String { "" }
@@ -63,13 +63,5 @@ open class OpenBridgeAppDelegate: UIResponder, UIApplicationDelegate, ReauthPass
     open func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String,
             completionHandler: @escaping () -> Void) {
         bridgeManager.handleEvents(for: identifier, completionHandler: completionHandler)
-    }
-    
-    public func storedPassword(for session: UserSessionInfoObserver) -> String? {
-        session.externalId
-    }
-    
-    public func clearStoredPassword() {
-        // TODO: syoung 03/21/2022 Decide what should happen if reauth fails.
     }
 }
